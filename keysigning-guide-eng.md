@@ -1,4 +1,4 @@
-# PGP Key Signing Guide
+# PGP Key Signing Party Guide
 
 This guide should describe our way of doing things - sharing, signing and distributing keys. 
 
@@ -13,8 +13,8 @@ Do NOT upload signed keys directly to a keyserver! When you send a signed key to
 
 If anything goes wrong, you can simply delete the key, reimport it and start over.
 
-	gpg --delete-key <keyid>
-	gpg --recv-keys <keyid>
+	`gpg --delete-key <keyid>`
+	`gpg --recv-keys <keyid>`
 
 ---
 
