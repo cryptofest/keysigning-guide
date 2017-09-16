@@ -5,8 +5,8 @@ Tento návod popisuje práci s PGP - sdílení, podepisování a distribuci klí
 ---
 
 ## TL;DR
-* Osobně nasdílejte lístky s identitami a jejich otisky
-* Podepiště identity, které souhlasí s daným lístkem
+* Osobně sdílejte lístky s vytištěnými identitami a jejich otisky
+* Podepište identity, které souhlasí s daným lístkem
 * Pošlete podepsané klíče majiteli
 
 Když se něco nepovede, lze jednoduše daný klíč smazat, importovat jej znovu a začít od začátku.
@@ -21,7 +21,7 @@ Nejdůležitější proces na každé key signing party je sdílení klíčů s 
 
 ### Tisk papírových lístků
 
-Distribuce klíčů je zajištěna sdílením papírových lístků, na kterém jsou vytištěné identity (jméno a email) a otisky klíče. Ty můžou být vygenerovány pomocí [paper slip generátoru](http://openpgp.quelltextlich.at/slip.html). Každý bi si měl lístků přinést dostatek, protože je vždy lepší mít více než méně.
+Distribuce klíčů je zajištěna sdílením papírových lístků, na kterém jsou vytištěné identity (jméno a email) a otisky klíče. Ty můžou být vygenerovány pomocí [paper slip generátoru](http://openpgp.quelltextlich.at/slip.html). Každý by si měl lístků přinést dostatek, protože je vždy lepší mít více než méně.
 
 ### Sdílení klíčů
 
@@ -35,7 +35,7 @@ Před přijmutím papírového lístku je nutno zkontrolovat jméno a obličej m
 
 ## 2. Podepisování
 
-Podepisování může nějakou dobu trvat, pokud je vše porváděno poctivě.
+Podepisování může nějakou dobu trvat, pokud je vše prováděno poctivě.
 
 ### Import klíčů z keyserveru
 
@@ -53,7 +53,7 @@ Pokud je vše v pořádku, může být importovaný klíč podepsán. Míru dův
 
 `gpg --sign-key --ask-cert-level <keyid>`
 
-Po projítí instrukcí se v terminálu objeví toto.
+Po projití instrukcí se v terminálu objeví toto.
 
 	How carefully have you verified the key you are about to sign actually belongs
 	to the person named above?  If you don't know what to answer, enter "0".
@@ -67,7 +67,7 @@ Po projítí instrukcí se v terminálu objeví toto.
 
 Protože byla provedená důkladná kontrola, lze zvolit podpis úrovně 3.
 
-Pokud má klíč více identit, měla by být každá podepsána zvlášť. To je většinou dost zdlouhavý proces, který lze automatizovat scriptem.
+Pokud má klíč více identit, měla by být každá podepsána zvlášť. To je většinou dost zdlouhavý proces, který lze automatizovat skriptem.
 
 ---
 
@@ -77,7 +77,7 @@ Nyní je třeba podepsaný klíč exportovat, zašifrovat a poslat jej zpět maj
 
 Klíč by měl být poslán emailem, nikoliv nahrán přímo za keyserver. Posílání emailem je zdlouhavější ale ověří se tak, že majitel klíče opravdu vlastní adresy, o kterých to tvrdí.
 
-### Export a šofrování
+### Export a šifrování
 
 Export i zašifrování klíče může být provedeno najednou.
 
@@ -91,7 +91,7 @@ Tímto se vytvoří soubor v aktivním adresáři, který se odešle zpět majit
 
 #### Odeslání emailem
 
-Zdlouhavějí, ale bezpečnější cesta je poslání klíče přílohou v emailu.
+Zdlouhavější, ale bezpečnější cesta je poslání klíče přílohou v emailu.
 
 Předmět emailu by měl značit, že zpráva obsahuje podepsaný klíč. Je třeba se ujistit, že k emailu byl přidán soubor s podepsaných klíčem a že samotná zpráva je také zašifrována. Tento proces lze automatizovat u běžných emailových klientů.
 
@@ -99,7 +99,7 @@ Předmět emailu by měl značit, že zpráva obsahuje podepsaný klíč. Je tř
 * Thunderbird - [Enigmail](https://www.enigmail.net/index.php/en/)
 * Claws Mail - [GPG Plugin](http://www.claws-mail.org/plugin.php?plugin=gpg)
 
-Po odeslání lze klíč smazat z klokální klíčenky.
+Po odeslání lze klíč smazat z lokální klíčenky.
 
 `gpg --delete-key <keyid>`
 
@@ -115,7 +115,7 @@ Po obdržení emailu s nově podepsaným klíčem, je nutné klíč dešifrovat 
 
 `gpg -d <attachment> > <keyfile> & gpg --import <keyfile>`
 
-GnuPG output by měl ohlásit, že podpis byl úspěšně naimportován. Podpis je třeba zkontrolovat `gpg --list-sig <keyid>` a pokud je vše v pořádku, stačí ho nahrát na keyserver.
+GnuPG výstup by měl ohlásit, že podpis byl úspěšně naimportován. Podpis je třeba zkontrolovat `gpg --list-sig <keyid>` a pokud je vše v pořádku, stačí ho nahrát na keyserver.
 
 `gpg --keyserver pool.sks-keyservers.net --send-keys <keyid>`
 
