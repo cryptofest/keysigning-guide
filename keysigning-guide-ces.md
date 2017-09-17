@@ -11,7 +11,7 @@ Tento návod popisuje práci s PGP - sdílení, podepisování a distribuci klí
 
 Když se něco nepovede, lze jednoduše daný klíč smazat, importovat jej znovu a začít od začátku.
 
-`gpg --delete-key <keyid> & gpg --recv-keys <keyid>`
+`gpg --delete-key <keyid> && gpg --recv-keys <keyid>`
 
 ---
 
