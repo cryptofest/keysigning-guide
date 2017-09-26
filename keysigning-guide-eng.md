@@ -9,12 +9,9 @@ This guide should describe our way of doing things - sharing, signing and distri
 * Sign keys and identities which match the paper slips
 * Send the signed keys via email
 
-Do NOT upload signed keys directly to a keyserver! When you send a signed key to an email address, you make sure that the address belongs to the person who claims to be the owner.
-
 If anything goes wrong, you can simply delete the key, reimport it and start over.
 
-	`gpg --delete-key <keyid>`
-	`gpg --recv-keys <keyid>`
+`gpg --delete-key <keyid> && gpg --recv-keys <keyid>`
 
 ---
 
@@ -44,7 +41,7 @@ Signing all identities might take a while when you do things properly.
 
 The paper slips you received should contain a fingerprint. Use that to fetch the key from a keyserver
 
-`gpg --recv-keys <keyid>`
+`gpg --keyserver pool.sks-keyservers.net --recv-keys <keyid>`
 
 ### Checking the Fingerprint and Identities
 
@@ -78,7 +75,7 @@ If the key has multiple identities, you should then sign each identity individua
 
 You have to export the key with your new signature, encrypt it and send it over to the owner.
 
-Do NOT upload the key directly to a keyserver! We know, mailing it is less convenient, but it is much safer. By sending it via email we make sure that the email address really belongs to the person you met on the key signing party. Furthermore, it allows the owner to check your signature before it goes public.
+The key should not be uploaded directly to a keyserver. Mailing the key is less convenient, but it is much safer. By sending it via email we make sure that the email address really belongs to the person you met on the key signing party. Furthermore, it allows the owner to check your signature before it goes public.
 
 ### Exporting and Encrypting
 
@@ -92,19 +89,33 @@ So if I were to export and encrypt my own key, it would look as the following.
 
 This creates a file in your working directory, which is the file to be sent to the key owner.
 
-### Sending Via E-Mail
+#### Sending Via E-Mail
 
-The mail title should describe that it contains the signed key. Make sure you attach the exported key, sign the message and encrypt it as well. You may then remove the key from your keyring.
+More cpomplicated but much safer way of key redistribution is mailing it as an encrypted attachment.
+
+The mail title should describe that it contains the signed key. Make sure you attach the exported key, sign the message and encrypt it as well. This can be automated using a plugin for the most widely used email clients.
+
+* Roundcube - [Enigma](https://github.com/roundcube/roundcubemail/tree/master/plugins/enigma)
+* Thunderbird - [Enigmail](https://www.enigmail.net/index.php/en/)
+* Claws Mail - [GPG Plugin](http://www.claws-mail.org/plugin.php?plugin=gpg)
+
+After the key is uploaded, it can be deleted from the local keyring.
 
 `gpg --delete-key <keyid>`
+
+#### Uploading to a keyserver
+
+Should you choose the easier way, you may upload the key to a keyserver directly.
+
+`gpg --keyserver pool.sks-keyservers.net --send-keys <keyid>`
 
 ### Receiving keys
 
 After you receive an email containing your key with a new signature, you should download the attachment and import it to your keyring.
 
-`gpg --import <keyfile>`
+`gpg -d <attachment> > <keyfile> & gpg --import <keyfile>`
 
-The GnuPG output should say that a signature has been added to your key. You may now upload it to a keyserver.
+The GnuPG output should say that a signature has been added to your key. Check the signature using `gpg --list-sig <keyid>`. If the signature is ok, you may upload it to a keyserver.
 
 `gpg --keyserver pool.sks-keyservers.net --send-keys <keyid>`
 
