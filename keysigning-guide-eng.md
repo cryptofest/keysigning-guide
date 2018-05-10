@@ -21,7 +21,7 @@ The most important process of any key signing party is sharing your keys with ot
 
 ### Printing Paper Slips
 
-The distribution of keys is done by sharing paper slips which contain the individual's identities along with their email, name and fingerprint. These slips can be generated using a [paper slip generator](http://openpgp.quelltextlich.at/slip.html). You should bring quite a handful of them, as it is always better to have more.
+The distribution of keys is done by sharing paper slips which contain the individual's identities along with their email, name and fingerprint. These slips can be generated using a [this](https://fingerprinter.pdostal.cz/) or [another](http://openpgp.quelltextlich.at/slip.html) paper slip generator. You should bring quite a handful of them, as it is always better to have more.
 
 ### Sharing Keys
 

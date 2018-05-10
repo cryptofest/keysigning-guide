@@ -21,7 +21,7 @@ Nejdůležitější proces na každé key signing party je sdílení klíčů s 
 
 ### Tisk papírových lístků
 
-Distribuce klíčů je zajištěna sdílením papírových lístků, na kterém jsou vytištěné identity (jméno a email) a otisky klíče. Ty můžou být vygenerovány pomocí [paper slip generátoru](http://openpgp.quelltextlich.at/slip.html). Každý by si měl lístků přinést dostatek, protože je vždy lepší mít více než méně.
+Distribuce klíčů je zajištěna sdílením papírových lístků, na kterém jsou vytištěné identity (jméno a email) a otisky klíče. Ty můžou být vygenerovány pomocí [tohoto](https://fingerprinter.pdostal.cz/) nebo [jiného](http://openpgp.quelltextlich.at/slip.html) paper slip generátoru. Každý by si měl lístků přinést dostatek, protože je vždy lepší mít více než méně.
 
 ### Sdílení klíčů
 
